@@ -4,6 +4,9 @@ extends ColorRect
 func _ready():
 	Events.connect("board_changed", self, "mount_board");
 	
+	self.rect_size = Vector2(500,500);
+
+	
 	
 func mount_board():
 	for x in range(0, Game.height):

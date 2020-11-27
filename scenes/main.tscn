@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/components/score_card.tscn" type="PackedScene" id=2]
 [ext_resource path="res://fonts/fantasque.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://scenes/components/grid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/new_game_button.gd" type="Script" id=4]
+[ext_resource path="res://scenes/components/grid.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -82,7 +83,6 @@ title = "Pontuação Máxima"
 score = "0"
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
-editor/display_folded = true
 margin_top = 95.0
 margin_right = 1004.0
 margin_bottom = 150.0
@@ -103,7 +103,7 @@ custom_colors/font_color = Color( 0.482353, 0.439216, 0.423529, 1 )
 text = "Duvido você alcançar 2048!"
 valign = 1
 
-[node name="Button" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="new_game_button" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 margin_left = 854.0
 margin_right = 1004.0
 margin_bottom = 40.0
@@ -114,6 +114,7 @@ custom_styles/normal = SubResource( 4 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.972549, 0.968627, 0.94902, 1 )
 text = "New Game"
+script = ExtResource( 4 )
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 154.0
@@ -122,4 +123,11 @@ margin_bottom = 580.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Grid" parent="ColorRect/MarginContainer/VBoxContainer/CenterContainer" instance=ExtResource( 4 )]
+[node name="Grid" parent="ColorRect/MarginContainer/VBoxContainer/CenterContainer" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 342.0
+margin_top = 53.0
+margin_right = 662.0
+margin_bottom = 373.0
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/new_game_button" to="ColorRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/new_game_button" method="_on_new_game_button_pressed"]
